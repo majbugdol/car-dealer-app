@@ -15,10 +15,19 @@ export class CarCardComponent implements OnInit {
 
   constructor(private carsService: CarsService) { }
 
-  //toDo: podpiąć endpoint
+// ! ewentualnie zrobić alert ze usunieto auto itd
   public onDelete(carId: string): void {
     console.log(carId);
+    this.carsService.deleteCar(carId)
+      .subscribe(
+        car => console.log(car)
+      )
+      .add(() => {
+          this.carsService.getList().subscribe();
+        }
+      )
   }
+  // this.carsService.getList().subscribe(cars => this.carList = cars as Car[]);
 
   ngOnInit(): void {
   }

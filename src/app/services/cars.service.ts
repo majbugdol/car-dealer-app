@@ -7,6 +7,11 @@ export interface Car {
   model: string,
 }
 
+export interface CarToPost {
+  brand: string,
+  model: string,
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,5 +25,9 @@ export class CarsService {
 
   public deleteCar(carId: string) {
 return this.http.delete(`https://car-dealer-backend.herokuapp.com/cars/${carId}`)
+  }
+
+  public postCar(carToPost: CarToPost){
+    return this.http.post('https://car-dealer-backend.herokuapp.com/cars', carToPost)
   }
 }
