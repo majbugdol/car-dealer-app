@@ -5,15 +5,16 @@ import { Car } from 'src/app/services/cars.service';
 @Component({
   selector: 'app-car-list',
   templateUrl: './car-list.component.html',
-  styleUrls: ['./car-list.component.scss']
+  styleUrls: ['./car-list.component.scss'],
 })
 export class CarListComponent implements OnInit {
   public carList: Car[] = [];
 
-  constructor(private carsService: CarsService) { }
+  constructor(private carsService: CarsService) {}
 
   ngOnInit(): void {
-    this.carsService.getList().subscribe(cars => this.carList = cars as Car[]);
+    this.carsService
+      .getList()
+      .subscribe((cars) => (this.carList = cars as Car[]));
   }
-
 }
