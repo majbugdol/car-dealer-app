@@ -1,0 +1,20 @@
+.navigation {
+  display: flex;
+  background-color: papayawhip;
+  line-height: 40px;
+  border-bottom: 2px solid yellow;
+
+  a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    margin: 10px;
+
+    &:hover {
+      color: blue;
+
+
+    }
+  }
+
+}
