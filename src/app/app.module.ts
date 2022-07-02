@@ -10,6 +10,7 @@ import { MainComponent } from './layout/main/main.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarCardComponent } from './components/car-card/car-card.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { CarCardComponent } from './components/car-card/car-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
