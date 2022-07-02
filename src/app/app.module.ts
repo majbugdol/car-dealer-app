@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarCardComponent } from './components/car-card/car-card.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
