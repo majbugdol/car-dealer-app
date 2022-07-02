@@ -4,7 +4,7 @@ import { Car, CarsService } from 'src/app/services/cars.service';
 @Component({
   selector: 'app-car-card',
   templateUrl: './car-card.component.html',
-  styleUrls: ['./car-card.component.scss']
+  styleUrls: ['./car-card.component.scss'],
 })
 export class CarCardComponent implements OnInit {
   @Input() carData: Car = {
@@ -13,23 +13,17 @@ export class CarCardComponent implements OnInit {
     model: '',
   };
 
-  constructor(private carsService: CarsService) { }
+  constructor(private carsService: CarsService) {}
 
-// ! ewentualnie zrobić alert ze usunieto auto itd
   public onDelete(carId: string): void {
     console.log(carId);
-    this.carsService.deleteCar(carId)
-      .subscribe(
-        car => console.log(car)
-      )
+    this.carsService
+      .deleteCar(carId)
+      .subscribe((car) => console.log(car))
       .add(() => {
-          this.carsService.getList().subscribe();
-        }
-      )
-  }
-  // this.carsService.getList().subscribe(cars => this.carList = cars as Car[]);
-
-  ngOnInit(): void {
+        this.carsService.getList().subscribe();
+      });
   }
 
+  ngOnInit(): void {}
 }
