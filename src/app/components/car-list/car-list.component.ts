@@ -8,13 +8,11 @@ import { Car } from 'src/app/services/cars.service';
   styleUrls: ['./car-list.component.scss'],
 })
 export class CarListComponent implements OnInit {
-  public carList: Car[] = [];
+  public carList = this.carsService.carList;
 
   constructor(private carsService: CarsService) {}
 
   ngOnInit(): void {
-    this.carsService
-      .getList()
-      .subscribe((cars) => (this.carList = cars as Car[]));
+    this.carsService.loadCarList();
   }
 }
