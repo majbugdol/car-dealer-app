@@ -33,7 +33,7 @@ export class AsideComponent implements OnInit {
 
   addCar() {
     let i = Math.floor(Math.random() * this.carsToAdd.length);
-    this.carsService.postCar(this.carsToAdd[i]).subscribe();
+    this.carsService.addCarToList(this.carsToAdd[i]);
   }
   ngOnInit(): void {}
 }

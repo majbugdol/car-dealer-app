@@ -16,13 +16,7 @@ export class CarCardComponent implements OnInit {
   constructor(private carsService: CarsService) {}
 
   public onDelete(carId: string): void {
-    console.log(carId);
-    this.carsService
-      .deleteCar(carId)
-      .subscribe((car) => console.log(car))
-      .add(() => {
-        this.carsService.getList().subscribe();
-      });
+    this.carsService.deleteCarFromList(carId);
   }
 
   ngOnInit(): void {}
