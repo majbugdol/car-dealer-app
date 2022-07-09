@@ -6,9 +6,9 @@ import { ContactComponent } from './pages/contact/contact.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'cars', component: CarsComponent },
-  { path: 'about-us', component: AboutUsComponent },
-  { path: 'contact', component: ContactComponent },
+  { path: 'cars', title: 'Samochody', component: CarsComponent },
+  { path: 'about-us', title: 'O nas', component: AboutUsComponent },
+  { path: 'contact', title: 'Kontakt', component: ContactComponent },
   {
     path: '',
     redirectTo: 'cars',
