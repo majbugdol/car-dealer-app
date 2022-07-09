@@ -17,6 +17,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CarsComponent } from './pages/cars/cars.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { CarsComponent } from './pages/cars/cars.component';
     AboutUsComponent,
     ContactComponent,
     CarsComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

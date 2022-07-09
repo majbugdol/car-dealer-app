@@ -3,11 +3,18 @@ import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CarsComponent } from './pages/cars/cars.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'about-us', component: AboutUsComponent },
   { path: 'cars', component: CarsComponent },
+  { path: 'about-us', component: AboutUsComponent },
   { path: 'contact', component: ContactComponent },
+  {
+    path: '',
+    redirectTo: 'cars',
+    pathMatch: 'full',
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
