@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { ContactComponent } from './pages/contact/contact.component';
+import { CarsComponent } from './pages/cars/cars.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MainComponent,
     CarListComponent,
     CarCardComponent,
+    AboutUsComponent,
+    ContactComponent,
+    CarsComponent,
   ],
   imports: [
     BrowserModule,
