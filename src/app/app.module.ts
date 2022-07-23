@@ -18,6 +18,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CarsComponent } from './pages/cars/cars.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatButtonModule,
     MatCardModule,
     MatToolbarModule,
+    MatFormFieldModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,3 +6,16 @@
 aside {
   padding: 20px;
 }
+
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+
+  .add-car-input {
+    display: block;
+  }
+  .add-car-button {
+    margin-top: 15px;
+    max-width: 170px;
+  }
+}

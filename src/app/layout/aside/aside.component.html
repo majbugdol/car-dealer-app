@@ -1,5 +1,23 @@
 <aside>
-  <button mat-raised-button color="primary" class="add-car" (click)="addCar()">
-    Dodaj samochód
-  </button>
+  <form (ngSubmit)="addCar()" class="add-car-form">
+    <label>
+      Marka:
+      <input
+        [(ngModel)]="car.brand"
+        name="brand"
+        type="text"
+        class="add-car-input"
+    /></label>
+    <label>
+      Model:
+      <input
+        [(ngModel)]="car.model"
+        name="model"
+        type="text"
+        class="add-car-input"
+    /></label>
+    <button mat-raised-button color="primary" class="add-car-button">
+      Dodaj samochód
+    </button>
+  </form>
 </aside>
