@@ -1,0 +1,18 @@
+.contact-page {
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.contact-page-info {
+  min-width: 25%;
+}
+
+.row {
+  display: flex;
+  mat-icon {
+    margin-right: 10px;
+  }
+}

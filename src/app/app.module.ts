@@ -20,6 +20,7 @@ import { CarsComponent } from './pages/cars/cars.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { FormsModule } from '@angular/forms';
     MatToolbarModule,
     MatFormFieldModule,
     FormsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
