@@ -1,10 +1,20 @@
 <aside>
-  <form (ngSubmit)="onSubmit($event)" class="add-car-form">
+  <form (ngSubmit)="addCar()" class="add-car-form">
     <label>
-      Marka: <input name="brand" type="text" class="add-car-input"
+      Marka:
+      <input
+        [(ngModel)]="car.brand"
+        name="brand"
+        type="text"
+        class="add-car-input"
     /></label>
     <label>
-      Model: <input name="model" type="text" class="add-car-input"
+      Model:
+      <input
+        [(ngModel)]="car.model"
+        name="model"
+        type="text"
+        class="add-car-input"
     /></label>
     <button mat-raised-button color="primary" class="add-car-button">
       Dodaj samochód

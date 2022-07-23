@@ -32,16 +32,14 @@ export class AsideComponent implements OnInit {
 
   constructor(private carsService: CarsService) {}
 
-  onSubmit(event: any) {
-    const carToAdd: CarToPost = {
-      brand: event.target.brand.value,
-      model: event.target.model.value,
-    };
-    console.log(carToAdd);
-    this.addCar(carToAdd);
+  car: CarToPost = {
+    brand: '',
+    model: '',
+  };
+
+  addCar() {
+    this.carsService.addCarToList(this.car);
   }
-  addCar(carToAdd: CarToPost) {
-    this.carsService.addCarToList(carToAdd);
-  }
+
   ngOnInit(): void {}
 }
