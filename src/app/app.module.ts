@@ -10,17 +10,25 @@ import { MainComponent } from './layout/main/main.component';
 import { CarListComponent } from './components/car-list/car-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarCardComponent } from './components/car-card/car-card.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { CarsComponent } from './pages/cars/cars.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { FormAddCarComponent } from './form-add-car/form-add-car.component';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//material
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule } from '@angular/forms';
-import { MatIcon, MatIconModule } from '@angular/material/icon';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+// import { MatSelectModule } from '@angular/material/select';
+// import { MatCheckboxModule } from '@angular/material/checkbox';
+// import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -35,6 +43,7 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     ContactComponent,
     CarsComponent,
     NotFoundComponent,
+    FormAddCarComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,12 @@ import { MatIcon, MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     FormsModule,
     MatIconModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    // MatSelectModule,
+    // MatCheckboxModule,
+    // MatChipsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

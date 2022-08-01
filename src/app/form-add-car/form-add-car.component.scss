@@ -1,0 +1,11 @@
+.add-car-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .add-car-button {
+    align-self: center;
+    margin-top: 15px;
+    min-width: 200px;
+  }
+}
