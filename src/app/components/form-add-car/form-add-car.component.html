@@ -18,8 +18,12 @@
       class="add-car-input"
       formControlName="model"
   /></mat-form-field>
-  <button mat-raised-button color="primary" class="add-car-button">
+  <button
+    mat-raised-button
+    color="primary"
+    class="add-car-button"
+    [disabled]="!addCarForm.valid"
+  >
     Dodaj samochód
   </button>
 </form>
-<!-- [disabled]="!addCarForm.valid" -->
