@@ -43,8 +43,12 @@ header {
   @media (min-width: 576px) {
     max-width: 80vw;
   }
-  @media (min-width: 1024px) {
-    max-width: 70vw;
+  @media (min-width: 768px) {
+    max-width: 75vw;
+  }
+
+  @media (min-width: 1400px) {
+    max-width: 60vw;
   }
 
   mat-card {
@@ -54,22 +58,29 @@ header {
     align-items: center;
     gap: 10px;
     font-size: 12px;
+    padding: 30px;
 
     @media (min-width: 576px) {
       font-size: 14px;
-      padding: 20px;
     }
 
     @media (min-width: 768px) {
       font-size: 17px;
-      padding: 30px;
+      padding: 40px;
+    }
+    @media (min-width: 992px) {
+      padding: 50px;
     }
     @media (min-width: 1024px) {
-      align-items: center;
-      gap: 20px;
       flex-direction: row;
+      gap: 20px;
+      padding: 30px;
       font-size: 14px;
-      padding: 20px;
+    }
+
+    @media (min-width: 1200px) {
+      font-size: 16px;
+      padding: 30px;
     }
   }
   mat-card p {
@@ -83,12 +94,13 @@ header {
     order: 2;
 
     @media (min-width: 576px) {
-      width: 90%;
       height: 40%;
     }
+
     @media (min-width: 1024px) {
       max-width: 55%;
       height: 100%;
+      order: unset;
     }
   }
 }
