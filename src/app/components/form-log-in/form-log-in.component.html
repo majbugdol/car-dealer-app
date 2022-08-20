@@ -1,0 +1,46 @@
+<form [formGroup]="logIn">
+  <mat-form-field appearance="fill">
+    <mat-label for="email">Wpisz e-mail:</mat-label>
+    <input
+      matInput
+      id="email"
+      type="text"
+      placeholder="e-mail@przyklad.pl"
+      required
+      formControlName="email"
+    />
+    <mat-error *ngIf="logIn.invalid">
+      <!-- {{
+      getErrorMessage()
+    }} -->
+      Pole nie może być puste
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label for="password">Wpisz hasło:</mat-label>
+    <input
+      matInput
+      [type]="hide ? 'password' : 'text'"
+      id="password"
+      type="text"
+      required
+      formControlName="password"
+    />
+    <button
+      mat-icon-button
+      matSuffix
+      (click)="hide = !hide"
+      [attr.aria-label]="'Hide password'"
+      [attr.aria-pressed]="hide"
+    >
+      <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+    </button>
+    <mat-error *ngIf="logIn.invalid">
+      <!-- {{
+      getErrorMessage()
+    }} -->
+      Pole nie może być puste
+    </mat-error></mat-form-field
+  >
+  <button mat-raised-button color="primary">Dodaj samochód</button>
+</form>
