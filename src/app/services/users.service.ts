@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { pluck, tap } from 'rxjs';
 
 export interface ILoginToPost {
   email: string;
@@ -11,7 +12,12 @@ export interface ILoginToPost {
 })
 export class UsersService {
   public login(loginData: ILoginToPost) {
-    this.postLoginData(loginData).subscribe((res) => console.log(res));
+    this.postLoginData(loginData)
+      .pipe(pluck('token'))
+      .subscribe({
+        next: (res) => console.log(res),
+        error: (err) => console.log(err),
+      });
   }
 
   constructor(private http: HttpClient) {}

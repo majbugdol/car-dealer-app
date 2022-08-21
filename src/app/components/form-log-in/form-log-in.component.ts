@@ -28,6 +28,7 @@ export class FormLogInComponent implements OnInit {
     return this.logInForm.controls;
   }
 
+  //zrób zabezpieczenie długośc hasła: 8 znaków i e-maila 6 znaków!!!
   getErrorMessageEmail() {
     if (this.controls.email.hasError('required')) {
       return 'Pole nie może być puste';
