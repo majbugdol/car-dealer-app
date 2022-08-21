@@ -9,11 +9,8 @@
       required
       formControlName="email"
     />
-    <mat-error *ngIf="logIn.invalid">
-      <!-- {{
-      getErrorMessage()
-    }} -->
-      Pole nie może być puste
+    <mat-error *ngIf="controls.email.invalid">
+      {{ getErrorMessageEmail() }}
     </mat-error>
   </mat-form-field>
   <mat-form-field appearance="fill">
@@ -35,11 +32,8 @@
     >
       <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
     </button>
-    <mat-error *ngIf="logIn.invalid">
-      <!-- {{
-      getErrorMessage()
-    }} -->
-      Pole nie może być puste
+    <mat-error *ngIf="controls.password.invalid">
+      {{ getErrorMessagePassword() }}
     </mat-error></mat-form-field
   >
   <button mat-raised-button color="primary">Dodaj samochód</button>
