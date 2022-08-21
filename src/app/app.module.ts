@@ -26,6 +26,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { FormLogInComponent } from './components/form-log-in/form-log-in.component';
+
 // import { MatSelectModule } from '@angular/material/select';
 // import { MatCheckboxModule } from '@angular/material/checkbox';
 // import { MatChipsModule } from '@angular/material/chips';
@@ -44,6 +46,7 @@ import { MatInputModule } from '@angular/material/input';
     CarsComponent,
     NotFoundComponent,
     FormAddCarComponent,
+    FormLogInComponent,
   ],
   imports: [
     BrowserModule,
