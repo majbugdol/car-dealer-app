@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UsersService, ILoginToPost } from 'src/app/services/users.service';
 
 interface ILoginForm {
   email: FormControl<string>;
@@ -12,7 +13,7 @@ interface ILoginForm {
   styleUrls: ['./form-log-in.component.scss'],
 })
 export class FormLogInComponent implements OnInit {
-  logIn: FormGroup<ILoginForm> = new FormGroup({
+  logInForm: FormGroup<ILoginForm> = new FormGroup({
     email: new FormControl('', {
       validators: [Validators.required, Validators.email],
       nonNullable: true,
@@ -24,7 +25,7 @@ export class FormLogInComponent implements OnInit {
   });
 
   public get controls(): ILoginForm {
-    return this.logIn.controls;
+    return this.logInForm.controls;
   }
 
   getErrorMessageEmail() {
@@ -41,7 +42,12 @@ export class FormLogInComponent implements OnInit {
   }
 
   hide = true;
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
+
+  login() {
+    const loginData = this.logInForm.value as ILoginToPost;
+    this.usersService.login(loginData);
+  }
 }
