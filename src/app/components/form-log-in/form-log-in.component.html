@@ -1,4 +1,4 @@
-<form [formGroup]="logIn">
+<form [formGroup]="logIn" class="login-form">
   <mat-form-field appearance="fill">
     <mat-label for="email">Wpisz e-mail:</mat-label>
     <input
@@ -36,5 +36,7 @@
       {{ getErrorMessagePassword() }}
     </mat-error></mat-form-field
   >
-  <button mat-raised-button color="primary">Dodaj samochód</button>
+  <button mat-raised-button color="primary" class="login-button">
+    Zaloguj
+  </button>
 </form>

@@ -5,6 +5,7 @@ interface ILoginForm {
   email: FormControl<string>;
   password: FormControl<string>;
 }
+
 @Component({
   selector: 'app-form-log-in',
   templateUrl: './form-log-in.component.html',
@@ -42,7 +43,5 @@ export class FormLogInComponent implements OnInit {
   hide = true;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.logIn);
-  }
+  ngOnInit(): void {}
 }

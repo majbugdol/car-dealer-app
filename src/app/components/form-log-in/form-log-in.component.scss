@@ -1,0 +1,11 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+
+  .login-button {
+    align-self: center;
+    margin-top: 15px;
+    min-width: 200px;
+  }
+}
