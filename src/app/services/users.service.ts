@@ -16,9 +16,10 @@ export class UsersService {
       .pipe(pluck('token'))
       .subscribe({
         next: (res) => console.log(res),
-        error: (err) => console.log(err),
+        error: (err) => console.log(err.error),
       });
   }
+  //backend - zrobic tak, żeby zawsze przychodził obiekt z wiadomością jako error, albo sam string -jest niejednolicie
 
   constructor(private http: HttpClient) {}
 
