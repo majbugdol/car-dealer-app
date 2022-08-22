@@ -7,6 +7,7 @@
       type="text"
       placeholder="e-mail@przyklad.pl"
       required
+      minlength="6"
       formControlName="email"
     />
     <mat-error *ngIf="controls.email.invalid">
@@ -22,6 +23,7 @@
       type="text"
       required
       formControlName="password"
+      minlength="8"
     />
     <button
       mat-icon-button

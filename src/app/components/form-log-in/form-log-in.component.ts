@@ -15,11 +15,15 @@ interface ILoginForm {
 export class FormLogInComponent implements OnInit {
   logInForm: FormGroup<ILoginForm> = new FormGroup({
     email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
+      validators: [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(6),
+      ],
       nonNullable: true,
     }),
     password: new FormControl('', {
-      validators: Validators.required,
+      validators: [Validators.required, Validators.minLength(8)],
       nonNullable: true,
     }),
   });
@@ -32,14 +36,22 @@ export class FormLogInComponent implements OnInit {
   getErrorMessageEmail() {
     if (this.controls.email.hasError('required')) {
       return 'Pole nie może być puste';
-    }
-    return this.controls.email.hasError('email')
-      ? 'Niepoprawny format e-mail'
+    } else if (this.controls.email.hasError('email'))
+      return 'Niepoprawny format e-mail';
+
+    return this.controls.email.hasError('minlength')
+      ? 'E-mail musi mieć co najmniej 6 znaków'
       : '';
   }
 
   getErrorMessagePassword() {
-    return 'Pole nie może być puste';
+    if (this.controls.password.hasError('required')) {
+      return 'Pole nie może być puste';
+    }
+
+    return this.controls.password.hasError('minlength')
+      ? 'Hasło musi mieć co najmniej 8 znaków'
+      : '';
   }
 
   hide = true;
