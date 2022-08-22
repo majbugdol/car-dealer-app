@@ -1,10 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { pluck, tap } from 'rxjs';
+import { map } from 'rxjs';
 
 export interface ILoginToPost {
   email: string;
   password: string;
+}
+
+interface ILoginData {
+  isLoginSuccessful: boolean;
+  message: string;
+  token?: string;
+  isAdmin?: boolean;
 }
 
 @Injectable({
@@ -13,13 +20,15 @@ export interface ILoginToPost {
 export class UsersService {
   public login(loginData: ILoginToPost) {
     this.postLoginData(loginData)
-      .pipe(pluck('token'))
+      .pipe(map((res) => res as ILoginData))
       .subscribe({
-        next: (res) => console.log(res),
+        next: (res) => {
+          console.log(res);
+          this.handleLogin(res);
+        },
         error: (err) => console.log(err.error),
       });
   }
-  //backend - zrobic tak, żeby zawsze przychodził obiekt z wiadomością jako error, albo sam string -jest niejednolicie
 
   constructor(private http: HttpClient) {}
 
@@ -28,5 +37,10 @@ export class UsersService {
       'https://car-dealer-backend.herokuapp.com/users/login',
       loginData
     );
+  }
+
+  private handleLogin(data: ILoginData) {
+    if (!data.isLoginSuccessful) {
+    }
   }
 }
