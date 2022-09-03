@@ -20,7 +20,7 @@ export class CarCardComponent implements OnInit {
   ) {}
 
   public get isLoggedIn(): boolean {
-    return this.usersService.isLoggedIn;
+    return this.usersService.state.isLoggedIn;
   }
 
   public onDelete(carId: string): void {
