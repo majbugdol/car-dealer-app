@@ -14,16 +14,14 @@ export class CarCardComponent implements OnInit {
     model: '',
   };
 
-  checkIfLoggedIn() {
-    const isLoggedIn: boolean = this.usersService.isLoggedIn;
-    console.log(isLoggedIn);
-    return isLoggedIn;
-  }
-
   constructor(
     private carsService: CarsService,
     private usersService: UsersService
   ) {}
+
+  public get isLoggedIn(): boolean {
+    return this.usersService.isLoggedIn;
+  }
 
   public onDelete(carId: string): void {
     this.carsService.deleteCarFromList(carId);

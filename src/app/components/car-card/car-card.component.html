@@ -2,7 +2,7 @@
   <p>Marka: {{ carData.brand }}</p>
   <p>Model: {{ carData.model }}</p>
   <button
-    *ngIf="checkIfLoggedIn()"
+    *ngIf="isLoggedIn"
     mat-raised-button
     color="warn"
     (click)="onDelete(carData._id)"

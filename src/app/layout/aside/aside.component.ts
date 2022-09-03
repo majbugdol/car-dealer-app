@@ -13,10 +13,8 @@ export class AsideComponent implements OnInit {
     private usersService: UsersService
   ) {}
 
-  checkIfLoggedIn() {
-    const isLoggedIn: boolean = this.usersService.isLoggedIn;
-    console.log(isLoggedIn);
-    return isLoggedIn;
+  public get isLoggedIn(): boolean {
+    return this.usersService.isLoggedIn;
   }
 
   car: CarToPost = {
@@ -24,7 +22,7 @@ export class AsideComponent implements OnInit {
     model: '',
   };
 
-  addCar() {
+  addCar(): void {
     this.carsService.addCarToList(this.car);
   }
 
