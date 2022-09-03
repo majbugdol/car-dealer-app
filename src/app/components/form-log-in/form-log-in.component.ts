@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, Form } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UsersService, ILoginToPost } from 'src/app/services/users.service';
 
 interface ILoginForm {
   email: FormControl<string>;
@@ -12,36 +13,54 @@ interface ILoginForm {
   styleUrls: ['./form-log-in.component.scss'],
 })
 export class FormLogInComponent implements OnInit {
-  logIn: FormGroup<ILoginForm> = new FormGroup({
+  logInForm: FormGroup<ILoginForm> = new FormGroup({
     email: new FormControl('', {
-      validators: [Validators.required, Validators.email],
+      validators: [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(6),
+      ],
       nonNullable: true,
     }),
     password: new FormControl('', {
-      validators: Validators.required,
+      validators: [Validators.required, Validators.minLength(8)],
       nonNullable: true,
     }),
   });
 
   public get controls(): ILoginForm {
-    return this.logIn.controls;
+    return this.logInForm.controls;
   }
 
+  //zrób zabezpieczenie długośc hasła: 8 znaków i e-maila 6 znaków!!!
   getErrorMessageEmail() {
     if (this.controls.email.hasError('required')) {
       return 'Pole nie może być puste';
-    }
-    return this.controls.email.hasError('email')
-      ? 'Niepoprawny format e-mail'
+    } else if (this.controls.email.hasError('email'))
+      return 'Niepoprawny format e-mail';
+
+    return this.controls.email.hasError('minlength')
+      ? 'E-mail musi mieć co najmniej 6 znaków'
       : '';
   }
 
   getErrorMessagePassword() {
-    return 'Pole nie może być puste';
+    if (this.controls.password.hasError('required')) {
+      return 'Pole nie może być puste';
+    }
+
+    return this.controls.password.hasError('minlength')
+      ? 'Hasło musi mieć co najmniej 8 znaków'
+      : '';
   }
 
   hide = true;
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
+
+  login() {
+    const loginData = this.logInForm.value as ILoginToPost;
+    this.usersService.login(loginData);
+  }
 }

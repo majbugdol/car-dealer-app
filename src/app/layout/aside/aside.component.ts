@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CarsService, CarToPost } from 'src/app/services/cars.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-aside',
@@ -7,37 +8,21 @@ import { CarsService, CarToPost } from 'src/app/services/cars.service';
   styleUrls: ['./aside.component.scss'],
 })
 export class AsideComponent implements OnInit {
-  // private carsToAdd: CarToPost[] = [
-  //   {
-  //     brand: 'Toyota',
-  //     model: 'Yaris',
-  //   },
-  //   {
-  //     brand: 'Toyota',
-  //     model: 'Corolla',
-  //   },
-  //   {
-  //     brand: 'Hyundai',
-  //     model: 'Getz',
-  //   },
-  //   {
-  //     brand: 'Ford',
-  //     model: 'Focus',
-  //   },
-  //   {
-  //     brand: 'Dacia',
-  //     model: 'Logan',
-  //   },
-  // ];
+  constructor(
+    private carsService: CarsService,
+    private usersService: UsersService
+  ) {}
 
-  constructor(private carsService: CarsService) {}
+  public get isLoggedIn(): boolean {
+    return this.usersService.isLoggedIn;
+  }
 
   car: CarToPost = {
     brand: '',
     model: '',
   };
 
-  addCar() {
+  addCar(): void {
     this.carsService.addCarToList(this.car);
   }
 

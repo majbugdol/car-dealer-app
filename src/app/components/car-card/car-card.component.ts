@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Car, CarsService } from 'src/app/services/cars.service';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-car-card',
@@ -13,7 +14,14 @@ export class CarCardComponent implements OnInit {
     model: '',
   };
 
-  constructor(private carsService: CarsService) {}
+  constructor(
+    private carsService: CarsService,
+    private usersService: UsersService
+  ) {}
+
+  public get isLoggedIn(): boolean {
+    return this.usersService.isLoggedIn;
+  }
 
   public onDelete(carId: string): void {
     this.carsService.deleteCarFromList(carId);

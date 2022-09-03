@@ -1,4 +1,4 @@
-<form [formGroup]="logIn" class="login-form">
+<form [formGroup]="logInForm" class="login-form" (ngSubmit)="login()">
   <mat-form-field appearance="fill">
     <mat-label for="email">Wpisz e-mail:</mat-label>
     <input
@@ -7,6 +7,7 @@
       type="text"
       placeholder="e-mail@przyklad.pl"
       required
+      minlength="6"
       formControlName="email"
     />
     <mat-error *ngIf="controls.email.invalid">
@@ -22,6 +23,7 @@
       type="text"
       required
       formControlName="password"
+      minlength="8"
     />
     <button
       mat-icon-button
@@ -36,7 +38,12 @@
       {{ getErrorMessagePassword() }}
     </mat-error></mat-form-field
   >
-  <button mat-raised-button color="primary" class="login-button">
+  <button
+    mat-raised-button
+    color="primary"
+    class="login-button"
+    [disabled]="!logInForm.valid"
+  >
     Zaloguj
   </button>
 </form>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Car {
@@ -19,14 +19,18 @@ export interface CarToPost {
 export class CarsService {
   public carList: Car[] = [];
 
+  private jwtHeader = new HttpHeaders({
+    'Content-Type': 'application/json',
+    'auth-token': window.localStorage.getItem('jwt') || '',
+  });
+
   constructor(private http: HttpClient) {}
 
   public async loadCarList(): Promise<void> {
-    this.getList().subscribe(cars => {
-        this.carList.length = 0;
-        this.carList.push(...cars)
-      }
-    )
+    this.getList().subscribe((cars) => {
+      this.carList.length = 0;
+      this.carList.push(...cars);
+    });
   }
 
   public async deleteCarFromList(carId: string): Promise<void> {
@@ -39,19 +43,28 @@ export class CarsService {
 
   // observables
   private getList() {
-    return this.http.get('https://car-dealer-backend.herokuapp.com/cars') as Observable<Car[]>;
+    return this.http.get(
+      'https://car-dealer-backend.herokuapp.com/cars'
+    ) as Observable<Car[]>;
   }
 
   private deleteCar(carId: string) {
+    console.log(this.jwtHeader);
     return this.http.delete(
-      `https://car-dealer-backend.herokuapp.com/cars/${carId}`
+      `https://car-dealer-backend.herokuapp.com/cars/${carId}`,
+      {
+        headers: this.jwtHeader,
+      }
     );
   }
 
   private postCar(carToPost: CarToPost) {
     return this.http.post(
       'https://car-dealer-backend.herokuapp.com/cars',
-      carToPost
+      carToPost,
+      {
+        headers: this.jwtHeader,
+      }
     );
   }
 }
