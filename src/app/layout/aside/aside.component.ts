@@ -15,6 +15,7 @@ export class AsideComponent implements OnInit {
 
   checkIfLoggedIn() {
     const isLoggedIn: boolean = this.usersService.isLoggedIn;
+    console.log(isLoggedIn);
     return isLoggedIn;
   }
 
