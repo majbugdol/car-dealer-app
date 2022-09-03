@@ -15,11 +15,17 @@ interface ILoginData {
   isAdmin?: boolean;
 }
 
+interface IUserServiceState {
+  isLoggedIn: boolean;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class UsersService {
-  isLoggedIn = false;
+  public state: IUserServiceState = {
+    isLoggedIn: false,
+  };
 
   public login(loginData: ILoginToPost) {
     this.postLoginData(loginData)
@@ -47,8 +53,6 @@ export class UsersService {
       return;
     }
     localStorage.setItem('jwt', data.token);
-    this.isLoggedIn = true;
+    this.state.isLoggedIn = true;
   }
-
-  //zrobić public state; a handleLogin chyba zmienic na successfull login i tam zapisac token?
 }

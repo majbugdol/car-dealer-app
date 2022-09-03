@@ -14,7 +14,7 @@ export class AsideComponent implements OnInit {
   ) {}
 
   public get isLoggedIn(): boolean {
-    return this.usersService.isLoggedIn;
+    return this.usersService.state.isLoggedIn;
   }
 
   car: CarToPost = {
