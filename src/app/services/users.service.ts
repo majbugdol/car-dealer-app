@@ -58,4 +58,14 @@ export class UsersService {
     this.state.isLoggedIn = true;
     this.state.isAdmin = data.isAdmin ?? false;
   }
+
+  private resetState() {
+    this.state.isLoggedIn = false;
+    this.state.isAdmin = false;
+  }
+
+  public logout() {
+    localStorage.removeItem('jwt');
+    this.resetState();
+  }
 }
