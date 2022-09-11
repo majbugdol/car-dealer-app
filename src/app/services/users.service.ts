@@ -17,6 +17,7 @@ interface ILoginData {
 
 interface IUserServiceState {
   isLoggedIn: boolean;
+  isAdmin: boolean;
 }
 
 @Injectable({
@@ -25,6 +26,7 @@ interface IUserServiceState {
 export class UsersService {
   public state: IUserServiceState = {
     isLoggedIn: false,
+    isAdmin: false,
   };
 
   public login(loginData: ILoginToPost) {
@@ -35,7 +37,7 @@ export class UsersService {
           console.log(res);
           this.handleLogin(res);
         },
-        error: (err) => console.log(err.error),
+        error: (err) => console.log(err.error, 'error'),
       });
   }
 
@@ -54,5 +56,6 @@ export class UsersService {
     }
     localStorage.setItem('jwt', data.token);
     this.state.isLoggedIn = true;
+    this.state.isAdmin = data.isAdmin ?? false;
   }
 }
