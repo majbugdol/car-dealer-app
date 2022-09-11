@@ -12,5 +12,13 @@
     >
       Wyloguj
     </button>
+    <button
+      (click)="onLoginButton()"
+      *ngIf="!isLoggedIn"
+      mat-button
+      class="nav-button login"
+    >
+      Zaloguj
+    </button>
   </mat-toolbar>
 </nav>

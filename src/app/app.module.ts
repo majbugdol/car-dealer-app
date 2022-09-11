@@ -27,10 +27,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { FormLogInComponent } from './components/form-log-in/form-log-in.component';
-
-// import { MatSelectModule } from '@angular/material/select';
-// import { MatCheckboxModule } from '@angular/material/checkbox';
-// import { MatChipsModule } from '@angular/material/chips';
+import { LoginComponent } from './pages/login/login.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,6 +45,7 @@ import { FormLogInComponent } from './components/form-log-in/form-log-in.compone
     NotFoundComponent,
     FormAddCarComponent,
     FormLogInComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,10 +60,8 @@ import { FormLogInComponent } from './components/form-log-in/form-log-in.compone
     MatIconModule,
     ReactiveFormsModule,
     MatInputModule,
-    // MatSelectModule,
-    // MatCheckboxModule,
-    // MatChipsModule,
     BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
