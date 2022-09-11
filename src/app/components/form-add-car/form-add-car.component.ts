@@ -18,6 +18,7 @@ export class FormAddCarComponent implements OnInit {
   addCar() {
     const carToPost = this.addCarForm.value as CarToPost;
     this.carsService.addCarToList(carToPost);
+    this.addCarForm.reset();
   }
 
   ngOnInit(): void {}

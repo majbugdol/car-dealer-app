@@ -25,10 +25,6 @@ export class CarsService {
       'auth-token': window.localStorage.getItem('jwt') || '',
     });
   }
-  // private jwtHeader = new HttpHeaders({
-  //   'Content-Type': 'application/json',
-  //   'auth-token': window.localStorage.getItem('jwt') || '',
-  // });
 
   constructor(private http: HttpClient) {}
 
