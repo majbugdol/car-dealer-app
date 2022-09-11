@@ -13,9 +13,9 @@
       Wyloguj
     </button>
     <button
+      (click)="onLoginButton()"
       *ngIf="!isLoggedIn"
       mat-button
-      routerLink="/login"
       class="nav-button login"
     >
       Zaloguj
