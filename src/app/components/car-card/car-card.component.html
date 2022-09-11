@@ -37,6 +37,7 @@
       mat-raised-button
       color="warn"
       (click)="onDelete(carData._id)"
+      [disabled]="isBusy"
     >
       Usuń
     </button>
