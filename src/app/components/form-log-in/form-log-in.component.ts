@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService, ILoginToPost } from 'src/app/services/users.service';
-
+import { Route, Router } from '@angular/router';
 interface ILoginForm {
   email: FormControl<string>;
   password: FormControl<string>;
@@ -55,12 +55,13 @@ export class FormLogInComponent implements OnInit {
   }
 
   hide = true;
-  constructor(private usersService: UsersService) {}
+  constructor(private usersService: UsersService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  login() {
+  async login() {
     const loginData = this.logInForm.value as ILoginToPost;
-    this.usersService.login(loginData);
+    await this.usersService.login(loginData);
+    this.router.navigateByUrl('/');
   }
 }

@@ -13,10 +13,6 @@ export class AsideComponent implements OnInit {
     private usersService: UsersService
   ) {}
 
-  public get isLoggedIn(): boolean {
-    return this.usersService.state.isLoggedIn;
-  }
-
   public get isAdmin(): boolean {
     return this.usersService.state.isAdmin;
   }
