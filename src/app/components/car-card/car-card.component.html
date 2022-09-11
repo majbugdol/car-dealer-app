@@ -33,10 +33,11 @@
   </div>
   <div class="car-delete-button">
     <button
-      *ngIf="isLoggedIn"
+      *ngIf="isAdmin"
       mat-raised-button
       color="warn"
       (click)="onDelete(carData._id)"
+      [disabled]="isBusy"
     >
       Usuń
     </button>

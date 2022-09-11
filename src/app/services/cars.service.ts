@@ -19,10 +19,12 @@ export interface CarToPost {
 export class CarsService {
   public carList: Car[] = [];
 
-  private jwtHeader = new HttpHeaders({
-    'Content-Type': 'application/json',
-    'auth-token': window.localStorage.getItem('jwt') || '',
-  });
+  private prepareHeader() {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      'auth-token': window.localStorage.getItem('jwt') || '',
+    });
+  }
 
   constructor(private http: HttpClient) {}
 
@@ -49,11 +51,12 @@ export class CarsService {
   }
 
   private deleteCar(carId: string) {
-    console.log(this.jwtHeader);
+    console.log(window.localStorage.getItem('jwt'));
+
     return this.http.delete(
       `https://car-dealer-backend.herokuapp.com/cars/${carId}`,
       {
-        headers: this.jwtHeader,
+        headers: this.prepareHeader(),
       }
     );
   }
@@ -63,7 +66,7 @@ export class CarsService {
       'https://car-dealer-backend.herokuapp.com/cars',
       carToPost,
       {
-        headers: this.jwtHeader,
+        headers: this.prepareHeader(),
       }
     );
   }

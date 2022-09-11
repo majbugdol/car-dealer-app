@@ -17,6 +17,10 @@ export class AsideComponent implements OnInit {
     return this.usersService.state.isLoggedIn;
   }
 
+  public get isAdmin(): boolean {
+    return this.usersService.state.isAdmin;
+  }
+
   car: CarToPost = {
     brand: '',
     model: '',

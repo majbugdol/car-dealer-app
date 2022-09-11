@@ -14,6 +14,8 @@ export class CarCardComponent implements OnInit {
     model: '',
   };
 
+  public isBusy: boolean = false;
+
   constructor(
     private carsService: CarsService,
     private usersService: UsersService
@@ -23,8 +25,19 @@ export class CarCardComponent implements OnInit {
     return this.usersService.state.isLoggedIn;
   }
 
+  public get isAdmin(): boolean {
+    return this.usersService.state.isAdmin;
+  }
+
   public onDelete(carId: string): void {
-    this.carsService.deleteCarFromList(carId);
+    this.isBusy = true;
+    try {
+      this.carsService.deleteCarFromList(carId);
+    } catch (err) {
+      console.log(err);
+    } finally {
+      this.isBusy = false;
+    }
   }
 
   ngOnInit(): void {}
