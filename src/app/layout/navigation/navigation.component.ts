@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-navigation',
@@ -6,7 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navigation.component.scss'],
 })
 export class NavigationComponent implements OnInit {
-  constructor() {}
+  constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {}
+
+  public get isLoggedIn(): boolean {
+    return this.usersService.state.isLoggedIn;
+  }
+
+  public onLogout() {
+    this.usersService.logout();
+  }
 }

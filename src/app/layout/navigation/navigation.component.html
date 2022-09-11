@@ -3,5 +3,14 @@
     <button mat-button routerLink="/cars" class="nav-button">Samochody</button>
     <button mat-button routerLink="/about-us" class="nav-button">O nas</button>
     <button mat-button routerLink="/contact" class="nav-button">Kontakt</button>
+    <button
+      (click)="onLogout()"
+      *ngIf="isLoggedIn"
+      mat-button
+      routerLink="/"
+      class="nav-button logout"
+    >
+      Wyloguj
+    </button>
   </mat-toolbar>
 </nav>
