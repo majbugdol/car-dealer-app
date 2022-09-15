@@ -29,6 +29,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormLogInComponent } from './components/form-log-in/form-log-in.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatInputModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
