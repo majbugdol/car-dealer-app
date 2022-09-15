@@ -2,7 +2,7 @@
 <mat-paginator
   *ngIf="this.carsService.carsResponse"
   [length]="this.carsService.carsResponse.totalDocs"
-  [pageSize]="this.carsService.carsResponse.limit"
+  [pageSize]="5"
   [pageSizeOptions]="[5, 10, 25, 100]"
   aria-label="Select page"
   (page)="onPageEvent($event)"
