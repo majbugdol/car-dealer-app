@@ -1,8 +1,10 @@
 <app-car-card *ngFor="let car of carList" [carData]="car"></app-car-card>
 <mat-paginator
-  [length]="100"
-  [pageSize]="10"
+  *ngIf="this.carsService.carsResponse"
+  [length]="this.carsService.carsResponse.totalDocs"
+  [pageSize]="this.carsService.carsResponse.limit"
   [pageSizeOptions]="[5, 10, 25, 100]"
   aria-label="Select page"
+  (page)="onPageEvent($event)"
 >
 </mat-paginator>

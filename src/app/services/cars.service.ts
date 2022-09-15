@@ -1,7 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
+export interface ICarListResponse {
+  docs: Car[];
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+}
 export interface Car {
   _id: string;
   brand: string;
@@ -17,6 +29,7 @@ export interface CarToPost {
   providedIn: 'root',
 })
 export class CarsService {
+  public carsResponse: ICarListResponse;
   public carList: Car[] = [];
   public page: number = 1;
   public limit: number = 5;
@@ -30,30 +43,34 @@ export class CarsService {
 
   constructor(private http: HttpClient) {}
 
-  public async loadCarList(page: number, limit: number): Promise<void> {
-    this.getList(page, limit).subscribe((cars) => {
-      this.carList.length = 0;
-      this.carList.push(...cars);
-    });
+  public async loadCarList(
+    page: number = this.page,
+    limit: number = this.limit
+  ): Promise<void> {
+    this.getList(page, limit)
+      .pipe(
+        map((cars) => {
+          this.carsResponse = cars;
+          this.carList.length = 0;
+          this.carList.push(...cars.docs);
+        })
+      )
+      .subscribe();
   }
 
   public async deleteCarFromList(carId: string): Promise<void> {
-    this.deleteCar(carId).subscribe(() =>
-      this.loadCarList(this.page, this.limit)
-    );
+    this.deleteCar(carId).subscribe(() => this.loadCarList());
   }
 
   public addCarToList(carToPost: CarToPost) {
-    this.postCar(carToPost).subscribe(() =>
-      this.loadCarList(this.page, this.limit)
-    );
+    this.postCar(carToPost).subscribe(() => this.loadCarList());
   }
 
   // observables
   private getList(page: number, limit: number) {
     return this.http.get(
       `https://car-dealer-backend.herokuapp.com/cars?page=${page}&limit=${limit}`
-    ) as Observable<Car[]>;
+    ) as Observable<ICarListResponse>;
   }
 
   private deleteCar(carId: string) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { Car, CarsService } from 'src/app/services/cars.service';
 
 @Component({
@@ -9,9 +9,13 @@ import { Car, CarsService } from 'src/app/services/cars.service';
 export class CarListComponent implements OnInit {
   public carList: Car[] = this.carsService.carList;
 
-  constructor(private carsService: CarsService) {}
+  constructor(public carsService: CarsService) {}
+
+  onPageEvent(data: any) {
+    console.log(data);
+  }
 
   ngOnInit(): void {
-    this.carsService.loadCarList(this.carsService.page, this.carsService.limit);
+    this.carsService.loadCarList();
   }
 }
