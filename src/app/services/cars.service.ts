@@ -18,6 +18,8 @@ export interface CarToPost {
 })
 export class CarsService {
   public carList: Car[] = [];
+  public page: number = 1;
+  public limit: number = 5;
 
   private prepareHeader() {
     return new HttpHeaders({
@@ -28,25 +30,29 @@ export class CarsService {
 
   constructor(private http: HttpClient) {}
 
-  public async loadCarList(): Promise<void> {
-    this.getList().subscribe((cars) => {
+  public async loadCarList(page: number, limit: number): Promise<void> {
+    this.getList(page, limit).subscribe((cars) => {
       this.carList.length = 0;
       this.carList.push(...cars);
     });
   }
 
   public async deleteCarFromList(carId: string): Promise<void> {
-    this.deleteCar(carId).subscribe(() => this.loadCarList());
+    this.deleteCar(carId).subscribe(() =>
+      this.loadCarList(this.page, this.limit)
+    );
   }
 
   public addCarToList(carToPost: CarToPost) {
-    this.postCar(carToPost).subscribe(() => this.loadCarList());
+    this.postCar(carToPost).subscribe(() =>
+      this.loadCarList(this.page, this.limit)
+    );
   }
 
   // observables
-  private getList() {
+  private getList(page: number, limit: number) {
     return this.http.get(
-      'https://car-dealer-backend.herokuapp.com/cars'
+      `https://car-dealer-backend.herokuapp.com/cars?page=${page}&limit=${limit}`
     ) as Observable<Car[]>;
   }
 

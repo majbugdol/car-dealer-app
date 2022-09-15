@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CarsService } from 'src/app/services/cars.service';
+import { Car, CarsService } from 'src/app/services/cars.service';
 
 @Component({
   selector: 'app-car-list',
@@ -7,11 +7,11 @@ import { CarsService } from 'src/app/services/cars.service';
   styleUrls: ['./car-list.component.scss'],
 })
 export class CarListComponent implements OnInit {
-  public carList = this.carsService.carList;
+  public carList: Car[] = this.carsService.carList;
 
   constructor(private carsService: CarsService) {}
 
   ngOnInit(): void {
-    this.carsService.loadCarList();
+    this.carsService.loadCarList(this.carsService.page, this.carsService.limit);
   }
 }
