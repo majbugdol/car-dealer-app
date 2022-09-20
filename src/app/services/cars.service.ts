@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, map } from 'rxjs';
+import { Observable, map, tap } from 'rxjs';
 
 export interface ICarListResponse {
   docs: Car[];
@@ -49,13 +49,17 @@ export class CarsService {
   ): Promise<void> {
     this.getList(page, limit)
       .pipe(
+        tap(console.log),
         map((cars) => {
           this.carsResponse = cars;
           this.carList.length = 0;
           this.carList.push(...cars.docs);
         })
       )
-      .subscribe();
+      .subscribe(() => {
+        this.page = page;
+        this.limit = limit;
+      });
   }
 
   public async deleteCarFromList(carId: string): Promise<void> {
